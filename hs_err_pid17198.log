@@ -1,0 +1,950 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 99614720 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=17198, tid=0x00007f2a634a1700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_181-b02) (build 1.8.0_181-b02)
+# Java VM: OpenJDK 64-Bit Server VM (25.181-b02 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f2a88079000):  VMThread [stack: 0x00007f2a633a2000,0x00007f2a634a2000] [id=17209]
+
+Stack: [0x00007f2a633a2000,0x00007f2a634a2000],  sp=0x00007f2a634a0270,  free space=1016k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xa3e6ce]  VMError::report_and_die()+0x14e
+V  [libjvm.so+0x4de889]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x99
+V  [libjvm.so+0x8af183]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x113
+V  [libjvm.so+0x8af3a9]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x8a68fa]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0x91405b]  PSVirtualSpace::expand_by(unsigned long)+0x6b
+V  [libjvm.so+0x904869]  PSOldGen::expand_by(unsigned long)+0x39
+V  [libjvm.so+0x9049e2]  PSOldGen::expand(unsigned long)+0xa2
+V  [libjvm.so+0x904ddb]  PSOldGen::resize(unsigned long)+0x1db
+V  [libjvm.so+0x90cb56]  PSParallelCompact::invoke_no_policy(bool)+0x986
+V  [libjvm.so+0x9121a9]  PSScavenge::invoke()+0x179
+V  [libjvm.so+0x8cc8ad]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x6d
+V  [libjvm.so+0xa400e7]  VM_ParallelGCFailedAllocation::doit()+0x97
+V  [libjvm.so+0xa46ac2]  VM_Operation::evaluate()+0x52
+V  [libjvm.so+0xa44fe1]  VMThread::evaluate_operation(VM_Operation*)+0xb1
+V  [libjvm.so+0xa45433]  VMThread::loop()+0x1c3
+V  [libjvm.so+0xa45902]  VMThread::run()+0x72
+V  [libjvm.so+0x8af502]  java_start(Thread*)+0x122
+
+VM_Operation (0x00007f2a60e6e170): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f2a88660800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f2a88696000 JavaThread "/0:0:0:0:0:0:0:1:44244 to /0:0:0:0:0:0:0:1:38547 workers Thread 3" [_thread_in_native, id=17226, stack(0x00007f2a60b6f000,0x00007f2a60c70000)]
+  0x00007f2a88695000 JavaThread "/0:0:0:0:0:0:0:1:44244 to /0:0:0:0:0:0:0:1:38547 workers Thread 2" [_thread_blocked, id=17225, stack(0x00007f2a60c70000,0x00007f2a60d71000)]
+  0x00007f2a88660800 JavaThread "/0:0:0:0:0:0:0:1:44244 to /0:0:0:0:0:0:0:1:38547 workers" [_thread_blocked, id=17224, stack(0x00007f2a60d71000,0x00007f2a60e72000)]
+  0x00007f2a88615800 JavaThread "Memory manager" [_thread_blocked, id=17223, stack(0x00007f2a6162e000,0x00007f2a6172f000)]
+  0x00007f2a880f5800 JavaThread "Service Thread" daemon [_thread_blocked, id=17216, stack(0x00007f2a622cb000,0x00007f2a623cc000)]
+  0x00007f2a880f2800 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=17215, stack(0x00007f2a623cd000,0x00007f2a624cd000)]
+  0x00007f2a880f0800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=17214, stack(0x00007f2a624ce000,0x00007f2a625ce000)]
+  0x00007f2a880ed000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=17213, stack(0x00007f2a625cf000,0x00007f2a626cf000)]
+  0x00007f2a880ef800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=17212, stack(0x00007f2a626cf000,0x00007f2a627d0000)]
+  0x00007f2a88085800 JavaThread "Finalizer" daemon [_thread_blocked, id=17211, stack(0x00007f2a6319f000,0x00007f2a632a0000)]
+  0x00007f2a88081000 JavaThread "Reference Handler" daemon [_thread_blocked, id=17210, stack(0x00007f2a632a0000,0x00007f2a633a1000)]
+  0x00007f2a8800b800 JavaThread "main" [_thread_blocked, id=17204, stack(0x00007f2a8fd37000,0x00007f2a8fe37000)]
+
+Other Threads:
+=>0x00007f2a88079000 VMThread [stack: 0x00007f2a633a2000,0x00007f2a634a2000] [id=17209]
+  0x00007f2a880f8000 WatcherThread [stack: 0x00007f2a621cb000,0x00007f2a622cb000] [id=17217]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f2a88007740] ExpandHeap_lock - owner thread: 0x00007f2a88079000
+[0x00007f2a88007dc0] Threads_lock - owner thread: 0x00007f2a88079000
+[0x00007f2a880082c0] Heap_lock - owner thread: 0x00007f2a88660800
+
+Heap:
+ PSYoungGen      total 204800K, used 8179K [0x00000000d7200000, 0x00000000eaf80000, 0x0000000100000000)
+  eden space 177664K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000e1f80000)
+  from space 27136K, 30% used [0x00000000e1f80000,0x00000000e277cf70,0x00000000e3a00000)
+  to   space 38912K, 0% used [0x00000000e8980000,0x00000000e8980000,0x00000000eaf80000)
+ ParOldGen       total 70656K, used 70435K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 99% used [0x0000000085600000,0x0000000089ac8c08,0x0000000089b00000)
+ Metaspace       used 24706K, capacity 25234K, committed 25520K, reserved 1073152K
+  class space    used 2440K, capacity 2616K, committed 2736K, reserved 1048576K
+
+Card table byte_map: [0x00007f2a8c6d0000,0x00007f2a8caa6000] byte_map_base: 0x00007f2a8c2a5000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f2a8f1d20a0
+ Begin Bits: [0x00007f2a642b0000, 0x00007f2a66158000)
+ End Bits:   [0x00007f2a66158000, 0x00007f2a68000000)
+
+Polling page: 0x00007f2a8fe4e000
+
+CodeCache: size=245760Kb used=14831Kb max_used=14976Kb free=230928Kb
+ bounds [0x00007f2a79000000, 0x00007f2a79eb0000, 0x00007f2a88000000]
+ total_blobs=4117 nmethods=3498 adapters=533
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 11,336 Thread 0x00007f2a880f2800 3853   !   2       org.codehaus.groovy.runtime.InvokerHelper::format (284 bytes)
+Event: 11,338 Thread 0x00007f2a880f2800 nmethod 3853 0x00007f2a7967bfd0 code [0x00007f2a7967c340, 0x00007f2a7967d598]
+Event: 11,338 Thread 0x00007f2a880f2800 3854   !   2       java.io.FilePermission$1::run (116 bytes)
+Event: 11,341 Thread 0x00007f2a880f2800 nmethod 3854 0x00007f2a79679950 code [0x00007f2a79679cc0, 0x00007f2a7967ac88]
+Event: 11,341 Thread 0x00007f2a880f2800 3855       1       org.codehaus.groovy.transform.stc.TypeCheckingExtension::afterVisitMethod (1 bytes)
+Event: 11,341 Thread 0x00007f2a880f2800 nmethod 3855 0x00007f2a79687610 code [0x00007f2a79687760, 0x00007f2a79687870]
+Event: 11,344 Thread 0x00007f2a880f0800 nmethod 3842 0x00007f2a79682a10 code [0x00007f2a79682c20, 0x00007f2a79683c18]
+Event: 11,344 Thread 0x00007f2a880f0800 3851       4       java.lang.AbstractStringBuilder::append (62 bytes)
+Event: 11,359 Thread 0x00007f2a880f0800 nmethod 3851 0x00007f2a79676a90 code [0x00007f2a79676c20, 0x00007f2a796774f8]
+Event: 11,359 Thread 0x00007f2a880f0800 3848       4       org.codehaus.groovy.ast.tools.GeneralUtils::copyAnnotatedNodeAnnotations (291 bytes)
+
+GC Heap History (10 events):
+Event: 6,089 GC heap after
+Heap after GC invocations=6 (full 0):
+ PSYoungGen      total 138752K, used 8028K [0x00000000d7200000, 0x00000000e0600000, 0x0000000100000000)
+  eden space 126976K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000dee00000)
+  from space 11776K, 68% used [0x00000000dfa80000,0x00000000e02573f0,0x00000000e0600000)
+  to   space 12288K, 0% used [0x00000000dee00000,0x00000000dee00000,0x00000000dfa00000)
+ ParOldGen       total 84992K, used 14543K [0x0000000085600000, 0x000000008a900000, 0x00000000d7200000)
+  object space 84992K, 17% used [0x0000000085600000,0x0000000086433dd0,0x000000008a900000)
+ Metaspace       used 20733K, capacity 21170K, committed 21296K, reserved 1069056K
+  class space    used 2157K, capacity 2311K, committed 2352K, reserved 1048576K
+}
+Event: 6,089 GC heap before
+{Heap before GC invocations=7 (full 1):
+ PSYoungGen      total 138752K, used 8028K [0x00000000d7200000, 0x00000000e0600000, 0x0000000100000000)
+  eden space 126976K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000dee00000)
+  from space 11776K, 68% used [0x00000000dfa80000,0x00000000e02573f0,0x00000000e0600000)
+  to   space 12288K, 0% used [0x00000000dee00000,0x00000000dee00000,0x00000000dfa00000)
+ ParOldGen       total 84992K, used 14543K [0x0000000085600000, 0x000000008a900000, 0x00000000d7200000)
+  object space 84992K, 17% used [0x0000000085600000,0x0000000086433dd0,0x000000008a900000)
+ Metaspace       used 20733K, capacity 21170K, committed 21296K, reserved 1069056K
+  class space    used 2157K, capacity 2311K, committed 2352K, reserved 1048576K
+Event: 6,253 GC heap after
+Heap after GC invocations=7 (full 1):
+ PSYoungGen      total 138752K, used 0K [0x00000000d7200000, 0x00000000e0600000, 0x0000000100000000)
+  eden space 126976K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000dee00000)
+  from space 11776K, 0% used [0x00000000dfa80000,0x00000000dfa80000,0x00000000e0600000)
+  to   space 12288K, 0% used [0x00000000dee00000,0x00000000dee00000,0x00000000dfa00000)
+ ParOldGen       total 70656K, used 15209K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 21% used [0x0000000085600000,0x00000000864da700,0x0000000089b00000)
+ Metaspace       used 20733K, capacity 21170K, committed 21296K, reserved 1069056K
+  class space    used 2157K, capacity 2311K, committed 2352K, reserved 1048576K
+}
+Event: 8,990 GC heap before
+{Heap before GC invocations=8 (full 1):
+ PSYoungGen      total 138752K, used 126976K [0x00000000d7200000, 0x00000000e0600000, 0x0000000100000000)
+  eden space 126976K, 100% used [0x00000000d7200000,0x00000000dee00000,0x00000000dee00000)
+  from space 11776K, 0% used [0x00000000dfa80000,0x00000000dfa80000,0x00000000e0600000)
+  to   space 12288K, 0% used [0x00000000dee00000,0x00000000dee00000,0x00000000dfa00000)
+ ParOldGen       total 70656K, used 15209K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 21% used [0x0000000085600000,0x00000000864da700,0x0000000089b00000)
+ Metaspace       used 23752K, capacity 24398K, committed 24624K, reserved 1071104K
+  class space    used 2417K, capacity 2578K, committed 2608K, reserved 1048576K
+Event: 9,035 GC heap after
+Heap after GC invocations=8 (full 1):
+ PSYoungGen      total 139264K, used 12288K [0x00000000d7200000, 0x00000000e4c00000, 0x0000000100000000)
+  eden space 126976K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000dee00000)
+  from space 12288K, 100% used [0x00000000dee00000,0x00000000dfa00000,0x00000000dfa00000)
+  to   space 18432K, 0% used [0x00000000e3a00000,0x00000000e3a00000,0x00000000e4c00000)
+ ParOldGen       total 70656K, used 24672K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 34% used [0x0000000085600000,0x0000000086e18180,0x0000000089b00000)
+ Metaspace       used 23752K, capacity 24398K, committed 24624K, reserved 1071104K
+  class space    used 2417K, capacity 2578K, committed 2608K, reserved 1048576K
+}
+Event: 10,210 GC heap before
+{Heap before GC invocations=9 (full 1):
+ PSYoungGen      total 139264K, used 139264K [0x00000000d7200000, 0x00000000e4c00000, 0x0000000100000000)
+  eden space 126976K, 100% used [0x00000000d7200000,0x00000000dee00000,0x00000000dee00000)
+  from space 12288K, 100% used [0x00000000dee00000,0x00000000dfa00000,0x00000000dfa00000)
+  to   space 18432K, 0% used [0x00000000e3a00000,0x00000000e3a00000,0x00000000e4c00000)
+ ParOldGen       total 70656K, used 24672K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 34% used [0x0000000085600000,0x0000000086e18180,0x0000000089b00000)
+ Metaspace       used 24456K, capacity 25106K, committed 25264K, reserved 1071104K
+  class space    used 2436K, capacity 2616K, committed 2736K, reserved 1048576K
+Event: 10,290 GC heap after
+Heap after GC invocations=9 (full 1):
+ PSYoungGen      total 196096K, used 18432K [0x00000000d7200000, 0x00000000e6880000, 0x0000000100000000)
+  eden space 177664K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000e1f80000)
+  from space 18432K, 100% used [0x00000000e3a00000,0x00000000e4c00000,0x00000000e4c00000)
+  to   space 27136K, 0% used [0x00000000e1f80000,0x00000000e1f80000,0x00000000e3a00000)
+ ParOldGen       total 70656K, used 38037K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 53% used [0x0000000085600000,0x0000000087b25588,0x0000000089b00000)
+ Metaspace       used 24456K, capacity 25106K, committed 25264K, reserved 1071104K
+  class space    used 2436K, capacity 2616K, committed 2736K, reserved 1048576K
+}
+Event: 11,365 GC heap before
+{Heap before GC invocations=10 (full 1):
+ PSYoungGen      total 196096K, used 196096K [0x00000000d7200000, 0x00000000e6880000, 0x0000000100000000)
+  eden space 177664K, 100% used [0x00000000d7200000,0x00000000e1f80000,0x00000000e1f80000)
+  from space 18432K, 100% used [0x00000000e3a00000,0x00000000e4c00000,0x00000000e4c00000)
+  to   space 27136K, 0% used [0x00000000e1f80000,0x00000000e1f80000,0x00000000e3a00000)
+ ParOldGen       total 70656K, used 38037K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 53% used [0x0000000085600000,0x0000000087b25588,0x0000000089b00000)
+ Metaspace       used 24706K, capacity 25234K, committed 25520K, reserved 1073152K
+  class space    used 2440K, capacity 2616K, committed 2736K, reserved 1048576K
+Event: 11,476 GC heap after
+Heap after GC invocations=10 (full 1):
+ PSYoungGen      total 204800K, used 27136K [0x00000000d7200000, 0x00000000eaf80000, 0x0000000100000000)
+  eden space 177664K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000e1f80000)
+  from space 27136K, 100% used [0x00000000e1f80000,0x00000000e3a00000,0x00000000e3a00000)
+  to   space 38912K, 0% used [0x00000000e8980000,0x00000000e8980000,0x00000000eaf80000)
+ ParOldGen       total 70656K, used 56015K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 79% used [0x0000000085600000,0x0000000088cb3dc8,0x0000000089b00000)
+ Metaspace       used 24706K, capacity 25234K, committed 25520K, reserved 1073152K
+  class space    used 2440K, capacity 2616K, committed 2736K, reserved 1048576K
+}
+Event: 11,476 GC heap before
+{Heap before GC invocations=11 (full 2):
+ PSYoungGen      total 204800K, used 27136K [0x00000000d7200000, 0x00000000eaf80000, 0x0000000100000000)
+  eden space 177664K, 0% used [0x00000000d7200000,0x00000000d7200000,0x00000000e1f80000)
+  from space 27136K, 100% used [0x00000000e1f80000,0x00000000e3a00000,0x00000000e3a00000)
+  to   space 38912K, 0% used [0x00000000e8980000,0x00000000e8980000,0x00000000eaf80000)
+ ParOldGen       total 70656K, used 56015K [0x0000000085600000, 0x0000000089b00000, 0x00000000d7200000)
+  object space 70656K, 79% used [0x0000000085600000,0x0000000088cb3dc8,0x0000000089b00000)
+ Metaspace       used 24706K, capacity 25234K, committed 25520K, reserved 1073152K
+  class space    used 2440K, capacity 2616K, committed 2736K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 7,393 Thread 0x00007f2a88660800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f2a79387610 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+Event: 7,401 Thread 0x00007f2a88660800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f2a79a7e018 method=org.codehaus.groovy.ast.CodeVisitorSupport.visitListOfExpressions(Ljava/util/List;)V @ 1
+Event: 7,481 Thread 0x00007f2a88660800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f2a79bf7254 method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 7,481 Thread 0x00007f2a88660800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f2a79bf7254 method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 7,481 Thread 0x00007f2a88660800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f2a79bf7254 method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 7,482 Thread 0x00007f2a88660800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f2a79bf7254 method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 7,483 Thread 0x00007f2a88660800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f2a79c663c4 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 7,485 Thread 0x00007f2a88660800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f2a79c663c4 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 7,485 Thread 0x00007f2a88660800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f2a79c663c4 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+Event: 7,485 Thread 0x00007f2a88660800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f2a79c663c4 method=java.util.regex.Pattern$CharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 37
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 10,999 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': [Lorg/codehaus/groovy/ast/GenericsType;BeanInfo> (0x00000000de7a7870) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 10,999 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': [Lorg/codehaus/groovy/ast/GenericsType;BeanInfo> (0x00000000de7a7cf0) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 10,999 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': [Lorg/codehaus/groovy/ast/GenericsType;BeanInfo> (0x00000000de7a8170) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 10,999 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': [Lorg/codehaus/groovy/ast/GenericsType;Customizer> (0x00000000de7a88b8) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 10,999 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': [Lorg/codehaus/groovy/ast/GenericsType;Customizer> (0x00000000de7a8d40) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 10,999 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': [Lorg/codehaus/groovy/ast/GenericsType;Customizer> (0x00000000de7a91c8) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/prims/jni.cpp, line 735]
+Event: 11,015 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': org/codehaus/groovy/runtime/DefaultGroovyMethodsBeanInfo> (0x00000000de8228e8) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/classfile/systemDictio
+Event: 11,015 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': org/codehaus/groovy/runtime/DefaultGroovyMethodsSupportBeanInfo> (0x00000000de83dae8) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/classfile/syste
+Event: 11,015 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': org/codehaus/groovy/runtime/DefaultGroovyMethodsSupportCustomizer> (0x00000000de859370) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/classfile/sys
+Event: 11,016 Thread 0x00007f2a88660800 Exception <a 'java/lang/ClassNotFoundException': org/codehaus/groovy/runtime/DefaultGroovyMethodsCustomizer> (0x00000000de874ae8) thrown at [/export/home/tester/jenkins/workspace/zulu8-silver-build-rhel64/zulu-src/hotspot/src/share/vm/classfile/systemDict
+
+Events (10 events):
+Event: 11,356 loading class org/hibernate/Hibernate done
+Event: 11,358 loading class grails/gorm/Entity$Trait$FieldHelper
+Event: 11,358 loading class grails/gorm/Entity$Trait$FieldHelper done
+Event: 11,359 loading class grails/artefact/DomainClass$Trait$FieldHelper
+Event: 11,359 loading class grails/artefact/DomainClass$Trait$FieldHelper done
+Event: 11,360 loading class grails/web/databinding/WebDataBinding$Trait$FieldHelper
+Event: 11,360 loading class grails/web/databinding/WebDataBinding$Trait$FieldHelper done
+Event: 11,361 loading class org/grails/datastore/gorm/GormEntity$Trait$FieldHelper
+Event: 11,361 loading class org/grails/datastore/gorm/GormEntity$Trait$FieldHelper done
+Event: 11,365 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 fd:00 2623840                            /home/impejj/.sdkman/candidates/java/8.0.181-zulu/bin/java
+00600000-00601000 rw-p 00000000 fd:00 2623840                            /home/impejj/.sdkman/candidates/java/8.0.181-zulu/bin/java
+017bc000-017dd000 rw-p 00000000 00:00 0                                  [heap]
+85600000-89b00000 rw-p 00000000 00:00 0 
+8fa00000-d7200000 ---p 00000000 00:00 0 
+d7200000-eaf80000 rw-p 00000000 00:00 0 
+eaf80000-100000000 ---p 00000000 00:00 0 
+100000000-1002ac000 rw-p 00000000 00:00 0 
+1002ac000-140000000 ---p 00000000 00:00 0 
+7f2a24000000-7f2a24046000 rw-p 00000000 00:00 0 
+7f2a24046000-7f2a28000000 ---p 00000000 00:00 0 
+7f2a2c000000-7f2a2cbb8000 rw-p 00000000 00:00 0 
+7f2a2cbb8000-7f2a30000000 ---p 00000000 00:00 0 
+7f2a30000000-7f2a30021000 rw-p 00000000 00:00 0 
+7f2a30021000-7f2a34000000 ---p 00000000 00:00 0 
+7f2a34000000-7f2a34021000 rw-p 00000000 00:00 0 
+7f2a34021000-7f2a38000000 ---p 00000000 00:00 0 
+7f2a387a3000-7f2a387e3000 rw-p 00000000 00:00 0 
+7f2a387e3000-7f2a389a3000 ---p 00000000 00:00 0 
+7f2a389a3000-7f2a38ba3000 rw-p 00000000 00:00 0 
+7f2a38bff000-7f2a38dff000 rw-p 00000000 00:00 0 
+7f2a38dff000-7f2a38fff000 rw-p 00000000 00:00 0 
+7f2a38fff000-7f2a3c000000 rw-p 00000000 00:00 0 
+7f2a3c000000-7f2a3c021000 rw-p 00000000 00:00 0 
+7f2a3c021000-7f2a40000000 ---p 00000000 00:00 0 
+7f2a40000000-7f2a40021000 rw-p 00000000 00:00 0 
+7f2a40021000-7f2a44000000 ---p 00000000 00:00 0 
+7f2a44000000-7f2a454ec000 rw-p 00000000 00:00 0 
+7f2a454ec000-7f2a48000000 ---p 00000000 00:00 0 
+7f2a48000000-7f2a48de8000 rw-p 00000000 00:00 0 
+7f2a48de8000-7f2a4c000000 ---p 00000000 00:00 0 
+7f2a4c000000-7f2a4c021000 rw-p 00000000 00:00 0 
+7f2a4c021000-7f2a50000000 ---p 00000000 00:00 0 
+7f2a50000000-7f2a51f75000 rw-p 00000000 00:00 0 
+7f2a51f75000-7f2a54000000 ---p 00000000 00:00 0 
+7f2a54000000-7f2a54021000 rw-p 00000000 00:00 0 
+7f2a54021000-7f2a58000000 ---p 00000000 00:00 0 
+7f2a58000000-7f2a58021000 rw-p 00000000 00:00 0 
+7f2a58021000-7f2a5c000000 ---p 00000000 00:00 0 
+7f2a5c000000-7f2a5c282000 rw-p 00000000 00:00 0 
+7f2a5c282000-7f2a60000000 ---p 00000000 00:00 0 
+7f2a6015c000-7f2a60169000 r--s 00083000 fd:00 11411311                   /home/impejj/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar
+7f2a60169000-7f2a60170000 r--s 0003f000 fd:00 11411314                   /home/impejj/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar
+7f2a60170000-7f2a60176000 r--s 00027000 fd:00 11411313                   /home/impejj/.gradle/caches/modules-2/files-2.1/opensymphony/sitemesh/2.4/fa84c82cce30a9a632c08dd2277d63993d972cf5/sitemesh-2.4.jar
+7f2a60176000-7f2a60178000 r--s 00007000 fd:00 11411312                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.3.1/ca323146797a4ff2bb4f630890f4c400a0860395/grails-web-taglib-3.3.1.jar
+7f2a60178000-7f2a6017b000 r--s 00015000 fd:00 11411256                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-taglib/3.3.1/772e8b5f992f6602cab07c7a58ab2924f97eed02/grails-taglib-3.3.1.jar
+7f2a6017b000-7f2a6017e000 r--s 0001d000 fd:00 11410252                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-json/2.4.15/f6f6890181821246398cd44ba1fdf74f55717697/groovy-json-2.4.15.jar
+7f2a6017e000-7f2a60182000 r--s 00042000 fd:00 11411309                   /home/impejj/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.11/876ead1db19f0c9e79c9789273a3ef8c6fd6c29b/jackson-core-2.8.11.jar
+7f2a60182000-7f2a60185000 r--s 0000b000 fd:00 11411310                   /home/impejj/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.8.0/45b426f7796b741035581a176744d91090e2e6fb/jackson-annotations-2.8.0.jar
+7f2a60185000-7f2a60188000 r--s 00029000 fd:00 11411308                   /home/impejj/.gradle/caches/modules-2/files-2.1/commons-validator/commons-validator/1.5.1/86d05a46e8f064b300657f751b5a98c62807e2a0/commons-validator-1.5.1.jar
+7f2a60188000-7f2a6018c000 r--s 00049000 fd:00 11406230                   /home/impejj/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-core/2.14.2/91e427fa721bb38ff18b8b1752b1081f8e90fc76/asset-pipeline-core-2.14.2.jar
+7f2a6018c000-7f2a6018d000 r--s 00005000 fd:00 11411307                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-codecs/3.3.8/f4e7982847a92749a25f31adf972c61b38ed87f8/grails-codecs-3.3.8.jar
+7f2a6018d000-7f2a60192000 r--s 00026000 fd:00 11411303                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/scaffolding-core/1.1.1/c79e9bd310896f3afbba331170c54fa2ce7f9a5d/scaffolding-core-1.1.1.jar
+7f2a60192000-7f2a60194000 r--s 00003000 fd:00 11411305                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-events-compat/3.3.2/1250482ac83841a19c75b150777a2d2c28592d33/grails-events-compat-3.3.2.jar
+7f2a60194000-7f2a60195000 r--s 00007000 fd:00 11411304                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-events-transform/3.3.2/645c93ccb03ea27a23d6ac25265b01e5a63b9525/grails-events-transform-3.3.2.jar
+7f2a60195000-7f2a60197000 r--s 0000b000 fd:00 11411300                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-events/3.3.2/a4c70fc8c391d8060d715ea68bfe4ff87761fd02/grails-events-3.3.2.jar
+7f2a60197000-7f2a60199000 r--s 00014000 fd:00 11411302                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-log4j/8.5.2/53bdd1eebc7393713261d178ac096a742423f940/tomcat-embed-logging-log4j-8.5.2.jar
+7f2a60199000-7f2a6019c000 r--s 00012000 fd:00 11411299                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.4.15/591ed2582868cb47fcac04eb50923faf52bfd231/groovy-sql-2.4.15.jar
+7f2a6019c000-7f2a601a6000 r--s 00060000 fd:00 11411296                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.3.18.RELEASE/816bc40759cd07ec50b86b1472aa021813387114/spring-jdbc-4.3.18.RELEASE.jar
+7f2a601a6000-7f2a601a7000 r--s 00004000 fd:00 11411295                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-validation/3.3.8/b52a0d5ec7d75703677c24d9c759b51ccb4291b5/grails-plugin-validation-3.3.8.jar
+7f2a601a7000-7f2a601a9000 r--s 00009000 fd:00 11411294                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-mimetypes/3.3.8/6efd7478161e84cd8c08b80465da3df5bbd0b1d3/grails-plugin-mimetypes-3.3.8.jar
+7f2a601a9000-7f2a601ab000 r--s 0000b000 fd:00 11411293                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-sitemesh/3.3.1/d639808f26ff1e16e32cb86129fd847961575abe/grails-web-sitemesh-3.3.1.jar
+7f2a601ab000-7f2a601ad000 r--s 00011000 fd:00 11411291                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-gsp/3.3.1/5670ed8376f739528fdb21de0514d2cc22c5a276/grails-web-gsp-3.3.1.jar
+7f2a601ad000-7f2a601ae000 r--s 00005000 fd:00 11411290                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-mvc/3.3.8/425ab101208d3865e9722ae79583bf2d933d6714/grails-web-mvc-3.3.8.jar
+7f2a601ae000-7f2a601b1000 r--s 0002a000 fd:00 11411289                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.3.8/eeb5dc5408de15afb394a69b3e9f766c45d51a34/grails-web-url-mappings-3.3.8.jar
+7f2a601b1000-7f2a601b4000 r--s 00014000 fd:00 11411288                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-databinding/3.3.8/3c852dd8c191eeffbe0c760bda80d97bc67dc5aa/grails-web-databinding-3.3.8.jar
+7f2a601b4000-7f2a601b9000 r--s 00029000 fd:00 11411287                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.3.18.RELEASE/d14d5b7c7fd060e345d5aebbe151e27d2c69ba6a/spring-context-support-4.3.18.RELEASE.jar
+7f2a601b9000-7f2a601ca000 r--s 000d0000 fd:00 11411286                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.18.RELEASE/67ad7f59830df97ab73f8c7ab53ea33ae7dcb68/spring-webmvc-4.3.18.RELEASE.jar
+7f2a601ca000-7f2a601cd000 r--s 00027000 fd:00 11411284                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-gsp/3.3.1/88115473871aeb898b590958ef2ba8a9cbd7dbb0/grails-gsp-3.3.1.jar
+7f2a601cd000-7f2a601d2000 r--s 00029000 fd:00 11411282                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-encoder/3.3.8/abe512a81f4e5369bc88c8c4259e39576a6565b4/grails-encoder-3.3.8.jar
+7f2a601d2000-7f2a601d5000 r--s 0000f000 fd:00 11411281                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-databinding/3.3.8/e3a1cdca8521b71d1e07645ec2bfe34493930c42/grails-databinding-3.3.8.jar
+7f2a601d5000-7f2a601d7000 r--s 00002000 fd:00 11411278                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-annotations-api/8.5.32/bc805a49362036d2705bbe051053f11120869fd/tomcat-annotations-api-8.5.32.jar
+7f2a601d7000-7f2a601e9000 r--s 0011f000 fd:00 11411276                   /home/impejj/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.11.2/2c5051e8e84d2c16316b758ebf746f9e90bef5a4/jackson-databind-2.8.11.2.jar
+7f2a601e9000-7f2a601ea000 r--s 00003000 fd:00 11411277                   /home/impejj/.gradle/caches/modules-2/files-2.1/javax.transaction/jta/1.1/2ca09f0b36ca7d71b762e14ea2ff09d5eac57558/jta-1.1.jar
+7f2a601ea000-7f2a601fc000 r--s 000b9000 fd:00 11411268                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.18.RELEASE/e41042a70a7d80da52261c1dfc569c7518b70dce/spring-web-4.3.18.RELEASE.jar
+7f2a601fc000-7f2a60202000 r--s 0003d000 fd:00 11411275                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.17/7a27ea250c5130b2922b86dea63cbb1cc10a660c/snakeyaml-1.17.jar
+7f2a60202000-7f2a60208000 r--s 0003e000 fd:00 11411274                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.3.18.RELEASE/64f2270bfd9d615c8c3b9d94995867f39391ed30/spring-expression-4.3.18.RELEASE.jar
+7f2a60208000-7f2a60211000 r--s 00054000 fd:00 11411273                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.3.18.RELEASE/dd930265a504563d76de79864ae3196f6e9035e0/spring-aop-4.3.18.RELEASE.jar
+7f2a60211000-7f2a60213000 r--s 0000e000 fd:00 11410334                   /home/impejj/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar
+7f2a60213000-7f2a6021e000 r--s 0006a000 fd:00 11411272                   /home/impejj/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.11/88b8df40340eed549fb07e2613879bf6b006704d/logback-core-1.1.11.jar
+7f2a6021e000-7f2a60221000 r--s 00012000 fd:00 11411271                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/6.1.10.BUILD-SNAPSHOT/8c63e5a8524a7026005ea1deb15cdfbe796ea55d/grails-datastore-gorm-support-6.1.10.BUILD-SNAPSHOT.jar
+7f2a60221000-7f2a60232000 r--s 000d0000 fd:00 11411270                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm/6.1.10.BUILD-SNAPSHOT/536d0f140ec0661382672151a2dccd5c3272da32/grails-datastore-gorm-6.1.10.BUILD-SNAPSHOT.jar
+7f2a60232000-7f2a60235000 r--s 00016000 fd:00 11411269                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-validation/6.1.10.BUILD-SNAPSHOT/8ac0ed249ca2b77baef1a3bb5cdecf78e6db5f40/grails-datastore-gorm-validation-6.1.10.BUILD-SNAPSHOT.jar
+7f2a60235000-7f2a60238000 r--s 0001d000 fd:00 11411222                   /home/impejj/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-grails/2.14.2/78d9651f5fc3dee1fce57cd5b01a18f9e53486b0/asset-pipeline-grails-2.14.2.jar
+7f2a60238000-7f2a6023a000 r--s 0001f000 fd:00 11411267                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-jsp/3.3.1/e45c3adb5f6fc6c7761227457d09114ec41c55fe/grails-web-jsp-3.3.1.jar
+7f2a6023a000-7f2a6023b000 r--s 00004000 fd:00 11411260                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.8/55f4d0afad4134069100cdb952fb156129ad1af1/grails-plugin-codecs-3.3.8.jar
+7f2a6023b000-7f2a60240000 r--s 00041000 fd:00 11411265                   /home/impejj/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar
+7f2a60240000-7f2a60242000 r--s 0000b000 fd:00 11411264                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-gsp-taglib/3.3.1/28e0c0776c9f5c6109b79a89860161db3369fe81/grails-web-gsp-taglib-3.3.1.jar
+7f2a60242000-7f2a60244000 r--s 00020000 fd:00 11411263                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/fields/2.2.8/bfb21b4e1c05db9f105159d12bcac0389b1ac464/fields-2.2.8.jar
+7f2a60244000-7f2a60247000 r--s 0000e000 fd:00 11411262                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-async/3.3.2/df2d4d6d96161b1105298a951c6fff31dd52e1e9/grails-async-3.3.2.jar
+7f2a60247000-7f2a60248000 r--s 00001000 fd:00 11411261                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/events/3.3.2/c43aed0886464bc62b8ef2c4963ea1bedeb19e6/events-3.3.2.jar
+7f2a60248000-7f2a60252000 r--s 000aa000 fd:00 11411257                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.21.0-GA/598244f595db5c5fb713731eddbb1c91a58d959b/javassist-3.21.0-GA.jar
+7f2a60252000-7f2a60255000 r--s 00016000 fd:00 11411259                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.3.8/ea17d94d6f6943742cc56ecc4614ff5ce1b05d27/grails-validation-3.3.8.jar
+7f2a60255000-7f2a60259000 r--s 0001e000 fd:00 11411253                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar
+7f2a60259000-7f2a6025b000 r--s 00005000 fd:00 11411258                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-datasource/3.3.8/a95588e21436d6d3b1baa8cedae2a06c52a7bf0c/grails-plugin-datasource-3.3.8.jar
+7f2a6025b000-7f2a6025e000 r--s 00019000 fd:00 11411255                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.3.8/7f0c6309c03c0b844e83161451f59ddda2079f48/grails-plugin-controllers-3.3.8.jar
+7f2a6025e000-7f2a6025f000 r--s 00005000 fd:00 11411254                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.3.8/4aa794850b39b2359652e1ae0cbe151c25ed48c/grails-web-3.3.8.jar
+7f2a6025f000-7f2a60263000 r--s 00028000 fd:00 11411251                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.3.8/b31f5b9ea65cdb0640cecf0b7ae6e20de617aad7/grails-web-common-3.3.8.jar
+7f2a60263000-7f2a60268000 r--s 0003a000 fd:00 11411247                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.5.32/ea5302e378f1449d4e5dda79e8d810c1e7931f91/tomcat-embed-websocket-8.5.32.jar
+7f2a60268000-7f2a6026d000 r--s 00037000 fd:00 11411245                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.5.32/e4fd0ee015d83fa1c5ec93ff1d05bdaf9a4480c5/tomcat-embed-el-8.5.32.jar
+7f2a6026d000-7f2a60296000 r--s 002d3000 fd:00 11411241                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.32/6bc6896200146010cc4666bdc6b9b0cbb453ee22/tomcat-embed-core-8.5.32.jar
+7f2a60296000-7f2a602a6000 r--s 00079000 fd:00 11411236                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-actuator/1.5.15.RELEASE/85be178d2300533b477127614a18fdba0929fa24/spring-boot-actuator-1.5.15.RELEASE.jar
+7f2a602a6000-7f2a602a7000 r--s 00000000 fd:00 11411238                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.5.15.RELEASE/5b4419f4c8960eafba0b4f588b27dbbde9ea9abd/spring-boot-starter-1.5.15.RELEASE.jar
+7f2a602a7000-7f2a602ab000 r--s 00040000 fd:00 11411237                   /home/impejj/.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/24247f3bb052ee068971393bdb83e04512bb1c3c/serializer-2.7.2.jar
+7f2a602ab000-7f2a602b9000 r--s 00081000 fd:00 11411235                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-core/6.1.10.BUILD-SNAPSHOT/51519063ff57213023af96ae78c7c12766b0642/grails-datastore-core-6.1.10.BUILD-SNAPSHOT.jar
+7f2a602b9000-7f2a602ba000 r--s 00009000 fd:00 11411234                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-spring/3.3.8/651f0a45cbc62c9c17afb25607e6335c715a41d5/grails-spring-3.3.8.jar
+7f2a602ba000-7f2a602be000 r--s 0003a000 fd:00 11410268                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-bootstrap/3.3.8/d5380ef15dff1a08b830ced9b6d9bbac4042a8cf/grails-bootstrap-3.3.8.jar
+7f2a602be000-7f2a602d7000 r--s 000fe000 fd:00 11411231                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.18.RELEASE/d302953b509e6d380856e245bf80c29770c08c98/spring-context-4.3.18.RELEASE.jar
+7f2a602d7000-7f2a602e5000 r--s 000ad000 fd:00 11411232                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.18.RELEASE/27460686b16b3ffee60bb3365cd56bba6ed860ff/spring-beans-4.3.18.RELEASE.jar
+7f2a602e5000-7f2a602ed000 r--s 0003a000 fd:00 11411228                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.3.18.RELEASE/b6b7938f7d8ba412b6663a8b950592557c2d996e/spring-tx-4.3.18.RELEASE.jar
+7f2a602ed000-7f2a60304000 r--s 000fe000 fd:00 11410286                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.18.RELEASE/4acbce682c3dfe38181d57b7e0792e2cc21e4f77/spring-core-4.3.18.RELEASE.jar
+7f2a60304000-7f2a60308000 r--s 00019000 fd:00 11411230                   /home/impejj/.gradle/caches/modules-2/files-2.1/com.googlecode.concurrentlinkedhashmap/concurrentlinkedhashmap-lru/1.4.2/2eaf3d3c9746d526ff7e5b93931d482c3887e6ac/concurrentlinkedhashmap-lru-1.4.2.jar
+7f2a60308000-7f2a6030d000 r--s 00017000 fd:00 11411229                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/1.0.0.Final/5e731d961297e5a07290bfaf3db1fbc8bbbf405a/hibernate-jpa-2.1-api-1.0.0.Final.jar
+7f2a6030d000-7f2a6030f000 r--s 00009000 fd:00 11406246                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar
+7f2a6030f000-7f2a6050f000 rw-p 00000000 00:00 0 
+7f2a6050f000-7f2a6051f000 r--s 00097000 fd:00 11411227                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.5.15.RELEASE/79126cdbd541d1fd9a1497efddb00848bf7b201/spring-boot-1.5.15.RELEASE.jar
+7f2a6051f000-7f2a60521000 r--s 00004000 fd:00 11411226                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.slf4j/log4j-over-slf4j/1.7.25/a87bb47468f47ee7aabbd54f93e133d4215769c3/log4j-over-slf4j-1.7.25.jar
+7f2a60521000-7f2a60523000 r--s 00000000 fd:00 11411225                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.25/af5364cd6679bfffb114f0dec8a157aaa283b76/jul-to-slf4j-1.7.25.jar
+7f2a60523000-7f2a60525000 r--s 00003000 fd:00 11406252                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.25/f8c32b13ff142a513eeb5b6330b1588dcb2c0461/jcl-over-slf4j-1.7.25.jar
+7f2a60525000-7f2a6052c000 r--s 00045000 fd:00 11411223                   /home/impejj/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.11/ccedfbacef4a6515d2983e3f89ed753d5d4fb665/logback-classic-1.1.11.jar
+7f2a6052c000-7f2a6052e000 r--s 00006000 fd:00 11411221                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.3.8/ed5b2131d09e557784bc454274ddaa3faf848c03/grails-plugin-domain-class-3.3.8.jar
+7f2a6052e000-7f2a6053a000 r--s 0021d000 fd:00 5640019                    /home/impejj/.m2/repository/pscmdomaincore/PScmDomainCore/0.9/PScmDomainCore-0.9.jar
+7f2a6053a000-7f2a6053f000 r--s 0004b000 fd:00 11411220                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/gsp/3.3.1/7b40598abe73d8535b2dd4503467d5c0c415b7b5/gsp-3.3.1.jar
+7f2a6053f000-7f2a60541000 r--s 00006000 fd:00 11411218                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/scaffolding/3.4.1/3794a2154aa473fd2281e1e36de398815a63e740/scaffolding-3.4.1.jar
+7f2a60541000-7f2a60544000 r--s 0000c000 fd:00 11411217                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/async/3.3.2/849be6dcabfba176078915404451c4b4479c6d49/async-3.3.2.jar
+7f2a60544000-7f2a60546000 r--s 00011000 fd:00 11411211                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails.plugins/cache/4.0.0/72be24e2f8b3e5407048f5cc5186dcd32e8de841/cache-4.0.0.jar
+7f2a60546000-7f2a60548000 r--s 00004000 fd:00 11411215                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-url-mappings/3.3.8/4f5727cb0224d23640a9483503c837c1cfeb7e5e/grails-plugin-url-mappings-3.3.8.jar
+7f2a60548000-7f2a6054a000 r--s 00003000 fd:00 11411214                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.3.8/3cb9c7dfc54107346e6deaffcb144f3019096cfa/grails-plugin-services-3.3.8.jar
+7f2a6054a000-7f2a6054e000 r--s 00031000 fd:00 11411205                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.3.8/8c6bc7985e3941e60336443e9f833b29ec573451/grails-plugin-rest-3.3.8.jar
+7f2a6054e000-7f2a6056f000 r--s 000e6000 fd:00 11411193                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.5.15.RELEASE/9cb093e335fc58e61581edcb959813b62731ef8e/spring-boot-autoconfigure-1.5.15.RELEASE.jar
+7f2a6056f000-7f2a6076f000 rw-p 00000000 00:00 0 
+7f2a6076f000-7f2a6096f000 rw-p 00000000 00:00 0 
+7f2a6096f000-7f2a60b6f000 rw-p 00000000 00:00 0 
+7f2a60b6f000-7f2a60b72000 ---p 00000000 00:00 0 
+7f2a60b72000-7f2a60c70000 rw-p 00000000 00:00 0 
+7f2a60c70000-7f2a60c73000 ---p 00000000 00:00 0 
+7f2a60c73000-7f2a60d71000 rw-p 00000000 00:00 0 
+7f2a60d71000-7f2a60d74000 ---p 00000000 00:00 0 
+7f2a60d74000-7f2a60e72000 rw-p 00000000 00:00 0 
+7f2a60e72000-7f2a60e89000 r-xp 00000000 fd:00 3675953                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f2a60e89000-7f2a61088000 ---p 00017000 fd:00 3675953                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f2a61088000-7f2a61089000 r--p 00016000 fd:00 3675953                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f2a61089000-7f2a6108a000 rw-p 00017000 fd:00 3675953                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f2a6108a000-7f2a61203000 r-xp 00000000 fd:00 3148295                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f2a61203000-7f2a61403000 ---p 00179000 fd:00 3148295                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f2a61403000-7f2a6140d000 r--p 00179000 fd:00 3148295                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f2a6140d000-7f2a6140f000 rw-p 00183000 fd:00 3148295                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7f2a6140f000-7f2a61413000 rw-p 00000000 00:00 0 
+7f2a61413000-7f2a61414000 r--s 00008000 fd:00 11411216                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/3.3.8/4230f5e53d8c50415f70e84cfc283bbe4a3e73b1/grails-plugin-interceptors-3.3.8.jar
+7f2a61414000-7f2a61415000 r--s 00003000 fd:00 11411213                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-i18n/3.3.8/a01c648c61520a89dcbe57b57656ed8d98995852/grails-plugin-i18n-3.3.8.jar
+7f2a61415000-7f2a61416000 r--s 00004000 fd:00 11411212                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-databinding/3.3.8/5dfc9e914c81c413ebf432e1c5459794ce673291/grails-plugin-databinding-3.3.8.jar
+7f2a61416000-7f2a61417000 r--s 00000000 fd:00 11411204                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-logging/3.3.8/2c8647c42d85b7708d239ba3b2c2b422514f4fe9/grails-logging-3.3.8.jar
+7f2a61417000-7f2a61418000 r--s 00001000 fd:00 11411203                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-boot/3.3.8/173becb00d5a1d7cb1f1a44533d9ca8efd9843a/grails-web-boot-3.3.8.jar
+7f2a61418000-7f2a61419000 r--s 00000000 fd:00 11411202                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.5.15.RELEASE/4e1bf3cd8480137b32c61d6f0fb54a4b81406a80/spring-boot-starter-tomcat-1.5.15.RELEASE.jar
+7f2a61419000-7f2a6141a000 r--s 00000000 fd:00 11411201                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-actuator/1.5.15.RELEASE/2f2e793c6c4592d99e58cf0668d1fcf2a84247f2/spring-boot-starter-actuator-1.5.15.RELEASE.jar
+7f2a6141a000-7f2a61428000 r--s 000b0000 fd:00 11411195                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.3.8/d535a1f07ed1a1ce388bc18c8b63a3f3abd1aeee/grails-core-3.3.8.jar
+7f2a61428000-7f2a61429000 r--s 00000000 fd:00 11411194                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.5.15.RELEASE/3a0d1b63705bb75ac54884c6c169b1e1908f1375/spring-boot-starter-logging-1.5.15.RELEASE.jar
+7f2a61429000-7f2a6142e000 r-xp 00000000 fd:00 2667648                    /home/impejj/.gradle/native/25/linux-amd64/libnative-platform.so
+7f2a6142e000-7f2a6162d000 ---p 00005000 fd:00 2667648                    /home/impejj/.gradle/native/25/linux-amd64/libnative-platform.so
+7f2a6162d000-7f2a6162e000 rw-p 00004000 fd:00 2667648                    /home/impejj/.gradle/native/25/linux-amd64/libnative-platform.so
+7f2a6162e000-7f2a61631000 ---p 00000000 00:00 0 
+7f2a61631000-7f2a6172f000 rw-p 00000000 00:00 0 
+7f2a6172f000-7f2a61740000 r-xp 00000000 fd:00 2623934                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libnio.so
+7f2a61740000-7f2a61940000 ---p 00011000 fd:00 2623934                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libnio.so
+7f2a61940000-7f2a61941000 rw-p 00011000 fd:00 2623934                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libnio.so
+7f2a61941000-7f2a61945000 r--s 00031000 fd:00 11410267                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-xml/2.4.15/40865f59469e6b0808c9c304bd17038997220c72/groovy-xml-2.4.15.jar
+7f2a61945000-7f2a61948000 r--s 00016000 fd:00 11410269                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-templates/2.4.15/b5cbe971f2950452c1d431ea0135dd8de2d5f58e/groovy-templates-2.4.15.jar
+7f2a61948000-7f2a61949000 r--s 00002000 fd:00 11410283                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-antlr/1.9.4/4cf30025981dc2344324a0ef0e40063c3ef08f0a/ant-antlr-1.9.4.jar
+7f2a61949000-7f2a6194a000 r--s 00004000 fd:00 11411402                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.9.4/334b62cb4be0432769679e8b94e83f8fd5ed395c/ant-launcher-1.9.4.jar
+7f2a6194a000-7f2a6194c000 r--s 0001b000 fd:00 11410282                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-junit/1.9.4/b063757dacaa716b643c2f9270e469183636ff11/ant-junit-1.9.4.jar
+7f2a6194c000-7f2a6194f000 r--s 0001f000 fd:00 11410281                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovydoc/2.4.15/7bace00f98542934e10c069d067df6e77e17f6cd/groovy-groovydoc-2.4.15.jar
+7f2a6194f000-7f2a6196d000 r--s 001cf000 fd:00 11411397                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant/1.9.4/6d473e8653d952045f550f4ef225a9591b79094a/ant-1.9.4.jar
+7f2a6196d000-7f2a6196f000 r--s 00010000 fd:00 11410244                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-ant/2.4.15/2faf2c49f25ce9868b2eed1aa7dc1ecd98d33353/groovy-ant-2.4.15.jar
+7f2a6196f000-7f2a619bc000 r--s 0042b000 fd:00 11406232                   /home/impejj/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.15/74b7e0b99526c569e3a59cb84dbcc6204d601ee6/groovy-2.4.15.jar
+7f2a619bc000-7f2a619c1000 r--s 0009d000 fd:00 2623932                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/jsse.jar
+7f2a619c1000-7f2a619d8000 r-xp 00000000 fd:00 2623951                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libnet.so
+7f2a619d8000-7f2a61bd7000 ---p 00017000 fd:00 2623951                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libnet.so
+7f2a61bd7000-7f2a61bd8000 rw-p 00016000 fd:00 2623951                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libnet.so
+7f2a61bd8000-7f2a61be6000 r--s 00043000 fd:00 2681924                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-tooling-api-3.5.jar
+7f2a61be6000-7f2a61be8000 r--s 00002000 fd:00 2681945                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-open-api-3.5.jar
+7f2a61be8000-7f2a61bee000 r--s 00032000 fd:00 2681947                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/jaxen-1.1.jar
+7f2a61bee000-7f2a61bf3000 r--s 00048000 fd:00 2681946                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/dom4j-1.6.1.jar
+7f2a61bf3000-7f2a61bfe000 r--s 00059000 fd:00 2681923                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-ui-3.5.jar
+7f2a61bfe000-7f2a61c0c000 r--s 000cb000 fd:00 2681914                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/kotlin-stdlib-1.1.0.jar
+7f2a61c0c000-7f2a61c43000 r--s 00284000 fd:00 2681913                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/kotlin-reflect-1.1.0.jar
+7f2a61c43000-7f2a61e08000 r--s 017fb000 fd:00 2681912                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/kotlin-compiler-embeddable-1.1.0.jar
+7f2a61e08000-7f2a61e0a000 r--s 00003000 fd:00 2667471                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/annotations-13.0.jar
+7f2a61e0a000-7f2a61e12000 r--s 00055000 fd:00 2681911                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-script-kotlin-0.8.0.jar
+7f2a61e12000-7f2a61e15000 r--s 0000b000 fd:00 2681933                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-resources-3.5.jar
+7f2a61e15000-7f2a61e17000 r--s 00005000 fd:00 2681922                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-cli-3.5.jar
+7f2a61e17000-7f2a61e18000 r--s 00005000 fd:00 2681950                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/log4j-over-slf4j-1.7.10.jar
+7f2a61e18000-7f2a61e1a000 r--s 00000000 fd:00 2681949                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/jul-to-slf4j-1.7.10.jar
+7f2a61e1a000-7f2a61e21000 r--s 00027000 fd:00 2681926                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-logging-3.5.jar
+7f2a61e21000-7f2a61e30000 r--s 0007f000 fd:00 2681934                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-model-core-3.5.jar
+7f2a61e30000-7f2a61e32000 r--s 00006000 fd:00 2681931                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-base-services-groovy-3.5.jar
+7f2a61e32000-7f2a61e34000 r--s 00007000 fd:00 2681939                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-model-groovy-3.5.jar
+7f2a61e34000-7f2a61e35000 r--s 00002000 fd:00 2681944                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-docs-3.5.jar
+7f2a61e35000-7f2a61e36000 r--s 00001000 fd:00 2681967                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-linux-i386-ncurses6-0.14.jar
+7f2a61e36000-7f2a61e37000 r--s 00001000 fd:00 2681966                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-linux-i386-ncurses5-0.14.jar
+7f2a61e37000-7f2a61e38000 r--s 00001000 fd:00 2681965                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-linux-amd64-ncurses6-0.14.jar
+7f2a61e38000-7f2a61e39000 r--s 00001000 fd:00 2681964                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-linux-amd64-ncurses5-0.14.jar
+7f2a61e39000-7f2a61e3a000 r--s 0000b000 fd:00 2681963                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-windows-i386-0.14.jar
+7f2a61e3a000-7f2a61e3c000 r--s 0000b000 fd:00 2681962                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-windows-amd64-0.14.jar
+7f2a61e3c000-7f2a61e3d000 r--s 00003000 fd:00 2681961                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-osx-i386-0.14.jar
+7f2a61e3d000-7f2a61e3f000 r--s 00002000 fd:00 2681960                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-osx-amd64-0.14.jar
+7f2a61e3f000-7f2a61e40000 r--s 00002000 fd:00 2681959                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-linux-i386-0.14.jar
+7f2a61e40000-7f2a61e41000 r--s 00002000 fd:00 2681958                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-linux-amd64-0.14.jar
+7f2a61e41000-7f2a61e42000 r--s 00003000 fd:00 2681957                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-freebsd-i386-libstdcpp-0.14.jar
+7f2a61e42000-7f2a61e43000 r--s 00004000 fd:00 2681956                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-freebsd-i386-libcpp-0.14.jar
+7f2a61e43000-7f2a61e44000 r--s 00004000 fd:00 2681955                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-freebsd-amd64-libstdcpp-0.14.jar
+7f2a61e44000-7f2a61e45000 r--s 00004000 fd:00 2681954                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-freebsd-amd64-libcpp-0.14.jar
+7f2a61e45000-7f2a61e48000 r--s 00023000 fd:00 2681948                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/jansi-1.14.jar
+7f2a61e48000-7f2a61e4c000 r--s 00012000 fd:00 2681943                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/native-platform-0.14.jar
+7f2a61e4c000-7f2a61e4f000 r--s 0000c000 fd:00 2681925                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-native-3.5.jar
+7f2a61e4f000-7f2a61e56000 r--s 0002a000 fd:00 2681932                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-messaging-3.5.jar
+7f2a61e56000-7f2a61e58000 r--s 00006000 fd:00 2681930                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-process-services-3.5.jar
+7f2a61e58000-7f2a61e5a000 r--s 00000000 fd:00 2681920                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-jvm-services-3.5.jar
+7f2a61e5a000-7f2a61e5b000 r--s 00000000 fd:00 2681971                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-version-info-3.5.jar
+7f2a61e5b000-7f2a61e64000 r--s 00047000 fd:00 2681919                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-base-services-3.5.jar
+7f2a61e64000-7f2a61ea6000 r--s 00220000 fd:00 2681921                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-core-3.5.jar
+7f2a61ea6000-7f2a61eb1000 r--s 0005b000 fd:00 2681915                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-launcher-3.5.jar
+7f2a61eb1000-7f2a61eb2000 r--s 00006000 fd:00 2681917                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-wrapper-3.5.jar
+7f2a61eb2000-7f2a61eb4000 r--s 00008000 fd:00 2682010                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-tooling-api-builders-3.5.jar
+7f2a61eb4000-7f2a61eb7000 r--s 00009000 fd:00 2682003                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-testing-native-3.5.jar
+7f2a61eb7000-7f2a61ebd000 r--s 00033000 fd:00 2682079                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/snakeyaml-1.6.jar
+7f2a61ebd000-7f2a61ebf000 r--s 00006000 fd:00 2682078                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jcommander-1.12.jar
+7f2a61ebf000-7f2a61ec4000 r--s 00040000 fd:00 2682077                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/bsh-2.0b4.jar
+7f2a61ec4000-7f2a61ec6000 r--s 00009000 fd:00 2682083                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/hamcrest-core-1.3.jar
+7f2a61ec6000-7f2a61ec8000 r--s 00007000 fd:00 2681970                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/objenesis-1.2.jar
+7f2a61ec8000-7f2a61eca000 r--s 00000000 fd:00 2681969                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/minlog-1.2.jar
+7f2a61eca000-7f2a61ecc000 r--s 0000f000 fd:00 2681968                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/reflectasm-1.07-shaded.jar
+7f2a61ecc000-7f2a61ed5000 r--s 00089000 fd:00 2682034                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/testng-6.3.1.jar
+7f2a61ed5000-7f2a61ed9000 r--s 00026000 fd:00 2681952                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/kryo-2.20.jar
+7f2a61ed9000-7f2a61ee1000 r--s 00045000 fd:00 2682033                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/junit-4.12.jar
+7f2a61ee1000-7f2a61ee7000 r--s 0002e000 fd:00 2682004                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-testing-jvm-3.5.jar
+7f2a61ee7000-7f2a61eeb000 r--s 00016000 fd:00 2682002                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-testing-base-3.5.jar
+7f2a61eeb000-7f2a61ef2000 r--s 00038000 fd:00 2682028                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/bcpg-jdk15on-1.51.jar
+7f2a61ef2000-7f2a61ef4000 r--s 0000c000 fd:00 2681981                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-signing-3.5.jar
+7f2a61ef4000-7f2a61ef6000 r--s 00007000 fd:00 2681980                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-scala-3.5.jar
+7f2a61ef6000-7f2a61ef7000 r--s 00004000 fd:00 2682008                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-resources-sftp-3.5.jar
+7f2a61ef7000-7f2a61f07000 r--s 00088000 fd:00 2682046                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/joda-time-2.8.2.jar
+7f2a61f07000-7f2a61f18000 r--s 0010d000 fd:00 2682045                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jackson-databind-2.6.6.jar
+7f2a61f18000-7f2a61f1b000 r--s 00009000 fd:00 2682044                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jackson-annotations-2.6.6.jar
+7f2a61f1b000-7f2a61f1f000 r--s 0003c000 fd:00 2682043                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jackson-core-2.6.6.jar
+7f2a61f1f000-7f2a61f2d000 r--s 00087000 fd:00 2682042                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aws-java-sdk-core-1.11.6.jar
+7f2a61f2d000-7f2a61f34000 r--s 00057000 fd:00 2682041                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aws-java-sdk-kms-1.11.6.jar
+7f2a61f34000-7f2a61f41000 r--s 0008e000 fd:00 2682040                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aws-java-sdk-s3-1.11.6.jar
+7f2a61f41000-7f2a61f43000 r--s 00004000 fd:00 2682009                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-resources-s3-3.5.jar
+7f2a61f43000-7f2a61f45000 r--s 0000f000 fd:00 2681986                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-reporting-3.5.jar
+7f2a61f45000-7f2a61f47000 r--s 00002000 fd:00 2681987                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-publish-3.5.jar
+7f2a61f47000-7f2a61f48000 r--s 00004000 fd:00 2681953                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/ant-launcher-1.9.6.jar
+7f2a61f48000-7f2a61f4a000 r--s 00009000 fd:00 2667576                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/commons-cli-1.2.jar
+7f2a61f4a000-7f2a61f4f000 r--s 00038000 fd:00 2681936                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/asm-all-5.1.jar
+7f2a61f4f000-7f2a61f6e000 r--s 001d1000 fd:00 2681937                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/ant-1.9.6.jar
+7f2a61f6e000-7f2a61f74000 r--s 00035000 fd:00 2681972                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-plugins-3.5.jar
+7f2a61f74000-7f2a61f76000 r--s 00009000 fd:00 2682005                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-plugin-development-3.5.jar
+7f2a61f76000-7f2a61f7c000 r--s 0002b000 fd:00 2681998                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-platform-play-3.5.jar
+7f2a61f7c000-7f2a61f8a000 r--s 00056000 fd:00 2681997                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-platform-native-3.5.jar
+7f2a61f8a000-7f2a61f8e000 r--s 0001b000 fd:00 2681992                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-platform-jvm-3.5.jar
+7f2a61f8e000-7f2a61f95000 r--s 00028000 fd:00 2681991                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-platform-base-3.5.jar
+7f2a61f95000-7f2a61fbd000 r--s 0021c000 fd:00 2682023                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/biz.aQute.bndlib-3.2.0.jar
+7f2a61fbd000-7f2a61fbf000 r--s 00003000 fd:00 2681976                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-osgi-3.5.jar
+7f2a61fbf000-7f2a61fc2000 r--s 0000c000 fd:00 2682026                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/pmaven-groovy-0.8-20100325.jar
+7f2a61fc2000-7f2a61fc3000 r--s 00004000 fd:00 2682025                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/pmaven-common-0.8-20100325.jar
+7f2a61fc3000-7f2a61fc8000 r--s 00024000 fd:00 2681977                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-maven-3.5.jar
+7f2a61fc8000-7f2a61fcb000 r--s 0000b000 fd:00 2681996                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-language-scala-3.5.jar
+7f2a61fcb000-7f2a61fd1000 r--s 0001a000 fd:00 2682000                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-language-native-3.5.jar
+7f2a61fd1000-7f2a61fd3000 r--s 00006000 fd:00 2681993                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-language-jvm-3.5.jar
+7f2a61fd3000-7f2a61fda000 r--s 0002f000 fd:00 2681994                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-language-java-3.5.jar
+7f2a61fda000-7f2a61fdc000 r--s 0000a000 fd:00 2681995                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-language-groovy-3.5.jar
+7f2a61fdc000-7f2a61fdf000 r--s 0001e000 fd:00 2682052                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jsp-api-2.1-6.1.14.jar
+7f2a61fdf000-7f2a62002000 r--s 00344000 fd:00 2682051                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/core-3.1.1.jar
+7f2a62002000-7f2a62003000 r--s 00006000 fd:00 2682050                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jetty-naming-6.1.26.jar
+7f2a62003000-7f2a62004000 r--s 00002000 fd:00 2682022                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/geronimo-annotation_1.0_spec-1.0.jar
+7f2a62004000-7f2a62006000 r--s 00002000 fd:00 2682021                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jetty-annotations-6.1.26.jar
+7f2a62006000-7f2a62017000 r--s 000ea000 fd:00 2682020                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jsp-2.1-6.1.14.jar
+7f2a62017000-7f2a62019000 r--s 0000d000 fd:00 2682019                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jetty-plus-6.1.26.jar
+7f2a62019000-7f2a6201b000 r--s 0001f000 fd:00 2682018                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/servlet-api-2.5-20081211.jar
+7f2a6201b000-7f2a6201f000 r--s 00028000 fd:00 2682017                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jetty-util-6.1.26.jar
+7f2a6201f000-7f2a62026000 r--s 0007d000 fd:00 2682016                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jetty-6.1.26.jar
+7f2a62026000-7f2a62028000 r--s 0000a000 fd:00 2681974                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-jetty-3.5.jar
+7f2a62028000-7f2a6202f000 r--s 00035000 fd:00 2682031                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/simple-4.1.21.jar
+7f2a6202f000-7f2a6203b000 r--s 00100000 fd:00 2682029                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/rhino-1.7R3.jar
+7f2a6203b000-7f2a6203f000 r--s 00012000 fd:00 2681983                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-javascript-3.5.jar
+7f2a6203f000-7f2a62042000 r--s 00011000 fd:00 2681989                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-jacoco-3.5.jar
+7f2a62042000-7f2a62045000 r--s 0000e000 fd:00 2681988                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-ivy-3.5.jar
+7f2a62045000-7f2a62046000 r--s 00002000 fd:00 2681999                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-ide-play-3.5.jar
+7f2a62046000-7f2a62049000 r--s 00013000 fd:00 2682001                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-ide-native-3.5.jar
+7f2a62049000-7f2a62053000 r--s 00056000 fd:00 2681978                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-ide-3.5.jar
+7f2a62053000-7f2a62054000 r--s 00000000 fd:00 2681938                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/javax.inject-1.jar
+7f2a62054000-7f2a62056000 r--s 00007000 fd:00 2681982                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-ear-3.5.jar
+7f2a62056000-7f2a62063000 r--s 00083000 fd:00 2681940                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/commons-collections-3.2.2.jar
+7f2a62063000-7f2a62065000 r--s 00005000 fd:00 2682032                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jatl-0.2.2.jar
+7f2a62065000-7f2a6206b000 r--s 00039000 fd:00 2681985                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-diagnostics-3.5.jar
+7f2a6206b000-7f2a6206d000 r--s 00009000 fd:00 2682011                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-composite-builds-3.5.jar
+7f2a6206d000-7f2a62072000 r--s 00023000 fd:00 2681973                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-code-quality-3.5.jar
+7f2a62072000-7f2a62077000 r--s 00022000 fd:00 2681990                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-build-init-3.5.jar
+7f2a62077000-7f2a620e7000 r--s 00645000 fd:00 2681935                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/groovy-all-2.4.10.jar
+7f2a620e7000-7f2a620ed000 r--s 0008e000 fd:00 2681984                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-build-comparison-3.5.jar
+7f2a620ed000-7f2a620ee000 r--s 00002000 fd:00 2682012                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-build-cache-http-3.5.jar
+7f2a620ee000-7f2a620f0000 r--s 00008000 fd:00 2681975                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-antlr-3.5.jar
+7f2a620f0000-7f2a620f1000 r--s 00005000 fd:00 2681979                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-announce-3.5.jar
+7f2a620f1000-7f2a620f9000 r--s 00028000 fd:00 2682081                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/xml-apis-1.3.04.jar
+7f2a620f9000-7f2a620ff000 r--s 00033000 fd:00 2682027                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/commons-codec-1.6.jar
+7f2a620ff000-7f2a62101000 r--s 00003000 fd:00 2681951                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/jcl-over-slf4j-1.7.10.jar
+7f2a62101000-7f2a62108000 r--s 00049000 fd:00 2682080                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/httpcore-4.4.4.jar
+7f2a62108000-7f2a6210b000 r--s 0001c000 fd:00 2682038                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/nekohtml-1.9.14.jar
+7f2a6210b000-7f2a62123000 r--s 00115000 fd:00 2682037                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/xercesImpl-2.9.1.jar
+7f2a62123000-7f2a6214b000 r--s 001cf000 fd:00 2681928                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/guava-jdk5-17.0.jar
+7f2a6214b000-7f2a62151000 r--s 0005b000 fd:00 2682036                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jcifs-1.3.17.jar
+7f2a62151000-7f2a6215e000 r--s 000a4000 fd:00 2682035                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/httpclient-4.4.1.jar
+7f2a6215e000-7f2a62161000 r--s 0000a000 fd:00 2682007                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-resources-http-3.5.jar
+7f2a62161000-7f2a62165000 r--s 00017000 fd:00 2682006                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-plugin-use-3.5.jar
+7f2a62165000-7f2a62166000 r--s 00000000 fd:00 2681916                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-runtime-api-info-3.5.jar
+7f2a62166000-7f2a62167000 r--s 00000000 fd:00 2681918                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/gradle-installation-beacon-3.5.jar
+7f2a62167000-7f2a62169000 r--s 00006000 fd:00 2682076                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aether-connector-wagon-1.13.1.jar
+7f2a62169000-7f2a6216d000 r--s 0001c000 fd:00 2682075                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aether-util-1.13.1.jar
+7f2a6216d000-7f2a6216e000 r--s 00003000 fd:00 2682074                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aether-spi-1.13.1.jar
+7f2a6216e000-7f2a62171000 r--s 0001d000 fd:00 2682073                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aether-impl-1.13.1.jar
+7f2a62171000-7f2a62174000 r--s 00013000 fd:00 2682072                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/aether-api-1.13.1.jar
+7f2a62174000-7f2a62175000 r--s 00007000 fd:00 2682071                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/wagon-http-shared4-2.4.jar
+7f2a62175000-7f2a62177000 r--s 0000b000 fd:00 2682070                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/wagon-provider-api-2.4.jar
+7f2a62177000-7f2a62178000 r--s 00002000 fd:00 2682069                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/wagon-http-2.4.jar
+7f2a62178000-7f2a6217a000 r--s 0000c000 fd:00 2682067                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-aether-provider-3.0.4.jar
+7f2a6217a000-7f2a6217c000 r--s 0000b000 fd:00 2682066                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-plugin-api-3.0.4.jar
+7f2a6217c000-7f2a6217e000 r--s 00006000 fd:00 2682065                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-repository-metadata-3.0.4.jar
+7f2a6217e000-7f2a62180000 r--s 0000b000 fd:00 2682064                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-artifact-3.0.4.jar
+7f2a62180000-7f2a62184000 r--s 00021000 fd:00 2682062                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-model-builder-3.0.4.jar
+7f2a62184000-7f2a6218a000 r--s 0003f000 fd:00 2682061                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-compat-3.0.4.jar
+7f2a6218a000-7f2a621ca000 r--s 00277000 fd:00 2682049                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/bcprov-jdk15on-1.51.jar
+7f2a621ca000-7f2a621cb000 ---p 00000000 00:00 0 
+7f2a621cb000-7f2a622cb000 rw-p 00000000 00:00 0 
+7f2a622cb000-7f2a622ce000 ---p 00000000 00:00 0 
+7f2a622ce000-7f2a623cc000 rw-p 00000000 00:00 0 
+7f2a623cc000-7f2a623cd000 ---p 00000000 00:00 0 
+7f2a623cd000-7f2a623d0000 ---p 00000000 00:00 0 
+7f2a623d0000-7f2a624cd000 rw-p 00000000 00:00 0 
+7f2a624cd000-7f2a624ce000 ---p 00000000 00:00 0 
+7f2a624ce000-7f2a624d1000 ---p 00000000 00:00 0 
+7f2a624d1000-7f2a625ce000 rw-p 00000000 00:00 0 
+7f2a625ce000-7f2a625cf000 ---p 00000000 00:00 0 
+7f2a625cf000-7f2a625d2000 ---p 00000000 00:00 0 
+7f2a625d2000-7f2a626cf000 rw-p 00000000 00:00 0 
+7f2a626cf000-7f2a626d2000 ---p 00000000 00:00 0 
+7f2a626d2000-7f2a627d0000 rw-p 00000000 00:00 0 
+7f2a627d0000-7f2a6319f000 r--p 00000000 fd:00 3152507                    /usr/lib/locale/locale-archive
+7f2a6319f000-7f2a631a2000 ---p 00000000 00:00 0 
+7f2a631a2000-7f2a632a0000 rw-p 00000000 00:00 0 
+7f2a632a0000-7f2a632a3000 ---p 00000000 00:00 0 
+7f2a632a3000-7f2a633a1000 rw-p 00000000 00:00 0 
+7f2a633a1000-7f2a633a2000 ---p 00000000 00:00 0 
+7f2a633a2000-7f2a68000000 rw-p 00000000 00:00 0 
+7f2a68000000-7f2a68021000 rw-p 00000000 00:00 0 
+7f2a68021000-7f2a6c000000 ---p 00000000 00:00 0 
+7f2a6c000000-7f2a6c021000 rw-p 00000000 00:00 0 
+7f2a6c021000-7f2a70000000 ---p 00000000 00:00 0 
+7f2a70000000-7f2a70021000 rw-p 00000000 00:00 0 
+7f2a70021000-7f2a74000000 ---p 00000000 00:00 0 
+7f2a74000000-7f2a74021000 rw-p 00000000 00:00 0 
+7f2a74021000-7f2a78000000 ---p 00000000 00:00 0 
+7f2a78000000-7f2a78002000 r--s 00026000 fd:00 2682063                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-model-3.0.4.jar
+7f2a78002000-7f2a78004000 r--s 00002000 fd:00 2682059                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-cipher-1.7.jar
+7f2a78004000-7f2a78006000 r--s 0000a000 fd:00 2682058                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-classworlds-2.4.jar
+7f2a78006000-7f2a7800d000 r--s 0002e000 fd:00 2682057                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-container-default-1.5.5.jar
+7f2a7800d000-7f2a7800f000 r--s 00000000 fd:00 2682082                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-component-annotations-1.5.5.jar
+7f2a7800f000-7f2a78011000 r--s 0000d000 fd:00 2682056                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-interpolation-1.14.jar
+7f2a78011000-7f2a78032000 r--s 00106000 fd:00 2682014                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-dependency-management-3.5.jar
+7f2a78032000-7f2a781e4000 rw-p 00000000 00:00 0 
+7f2a781e4000-7f2a783b5000 r--s 03c60000 fd:00 2623866                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/rt.jar
+7f2a783b5000-7f2a79000000 rw-p 00000000 00:00 0 
+7f2a79000000-7f2a79eb0000 rwxp 00000000 00:00 0 
+7f2a79eb0000-7f2a88000000 ---p 00000000 00:00 0 
+7f2a88000000-7f2a886d6000 rw-p 00000000 00:00 0 
+7f2a886d6000-7f2a8c000000 ---p 00000000 00:00 0 
+7f2a8c000000-7f2a8c001000 r--s 00002000 fd:00 2682068                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/wagon-file-2.4.jar
+7f2a8c001000-7f2a8c005000 r--s 00033000 fd:00 2682055                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-utils-2.0.6.jar
+7f2a8c005000-7f2a8c008000 r--s 00008000 fd:00 2682054                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-settings-builder-3.0.4.jar
+7f2a8c008000-7f2a8c00d000 r--s 00040000 fd:00 2682039                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/jsch-0.1.54.jar
+7f2a8c00d000-7f2a8c011000 r--s 0001d000 fd:00 2682048                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/xbean-reflect-3.4.jar
+7f2a8c011000-7f2a8c01d000 r--s 0007d000 fd:00 2682024                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-core-3.0.4.jar
+7f2a8c01d000-7f2a8c03e000 rw-p 00000000 00:00 0 
+7f2a8c03e000-7f2a8c03f000 ---p 00000000 00:00 0 
+7f2a8c03f000-7f2a8c13f000 rw-p 00000000 00:00 0 
+7f2a8c13f000-7f2a8c140000 ---p 00000000 00:00 0 
+7f2a8c140000-7f2a8c240000 rw-p 00000000 00:00 0 
+7f2a8c240000-7f2a8c241000 ---p 00000000 00:00 0 
+7f2a8c241000-7f2a8c341000 rw-p 00000000 00:00 0 
+7f2a8c341000-7f2a8c342000 ---p 00000000 00:00 0 
+7f2a8c342000-7f2a8c465000 rw-p 00000000 00:00 0 
+7f2a8c465000-7f2a8c6d0000 ---p 00000000 00:00 0 
+7f2a8c6d0000-7f2a8c6f3000 rw-p 00000000 00:00 0 
+7f2a8c6f3000-7f2a8c95e000 ---p 00000000 00:00 0 
+7f2a8c95e000-7f2a8c9fd000 rw-p 00000000 00:00 0 
+7f2a8c9fd000-7f2a8caa5000 ---p 00000000 00:00 0 
+7f2a8caa5000-7f2a8cae1000 rw-p 00000000 00:00 0 
+7f2a8cae1000-7f2a8ce66000 ---p 00000000 00:00 0 
+7f2a8ce66000-7f2a8ce81000 r-xp 00000000 fd:00 2623966                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libzip.so
+7f2a8ce81000-7f2a8d080000 ---p 0001b000 fd:00 2623966                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libzip.so
+7f2a8d080000-7f2a8d081000 rw-p 0001a000 fd:00 2623966                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libzip.so
+7f2a8d081000-7f2a8d08c000 r-xp 00000000 fd:00 3674872                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f2a8d08c000-7f2a8d28b000 ---p 0000b000 fd:00 3674872                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f2a8d28b000-7f2a8d28c000 r--p 0000a000 fd:00 3674872                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f2a8d28c000-7f2a8d28d000 rw-p 0000b000 fd:00 3674872                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f2a8d28d000-7f2a8d293000 rw-p 00000000 00:00 0 
+7f2a8d293000-7f2a8d2aa000 r-xp 00000000 fd:00 3674866                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f2a8d2aa000-7f2a8d4a9000 ---p 00017000 fd:00 3674866                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f2a8d4a9000-7f2a8d4aa000 r--p 00016000 fd:00 3674866                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f2a8d4aa000-7f2a8d4ab000 rw-p 00017000 fd:00 3674866                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f2a8d4ab000-7f2a8d4ad000 rw-p 00000000 00:00 0 
+7f2a8d4ad000-7f2a8d4b8000 r-xp 00000000 fd:00 3674883                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f2a8d4b8000-7f2a8d6b7000 ---p 0000b000 fd:00 3674883                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f2a8d6b7000-7f2a8d6b8000 r--p 0000a000 fd:00 3674883                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f2a8d6b8000-7f2a8d6b9000 rw-p 0000b000 fd:00 3674883                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f2a8d6b9000-7f2a8d6c1000 r-xp 00000000 fd:00 3674868                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f2a8d6c1000-7f2a8d8c1000 ---p 00008000 fd:00 3674868                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f2a8d8c1000-7f2a8d8c2000 r--p 00008000 fd:00 3674868                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f2a8d8c2000-7f2a8d8c3000 rw-p 00009000 fd:00 3674868                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f2a8d8c3000-7f2a8d8ed000 r-xp 00000000 fd:00 2623971                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libjava.so
+7f2a8d8ed000-7f2a8daed000 ---p 0002a000 fd:00 2623971                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libjava.so
+7f2a8daed000-7f2a8daef000 rw-p 0002a000 fd:00 2623971                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libjava.so
+7f2a8daef000-7f2a8dafc000 r-xp 00000000 fd:00 2623959                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libverify.so
+7f2a8dafc000-7f2a8dcfc000 ---p 0000d000 fd:00 2623959                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libverify.so
+7f2a8dcfc000-7f2a8dcfe000 rw-p 0000d000 fd:00 2623959                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/libverify.so
+7f2a8dcfe000-7f2a8dd05000 r-xp 00000000 fd:00 3674923                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f2a8dd05000-7f2a8df04000 ---p 00007000 fd:00 3674923                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f2a8df04000-7f2a8df05000 r--p 00006000 fd:00 3674923                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f2a8df05000-7f2a8df06000 rw-p 00007000 fd:00 3674923                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f2a8df06000-7f2a8e0a3000 r-xp 00000000 fd:00 3674845                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f2a8e0a3000-7f2a8e2a2000 ---p 0019d000 fd:00 3674845                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f2a8e2a2000-7f2a8e2a3000 r--p 0019c000 fd:00 3674845                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f2a8e2a3000-7f2a8e2a4000 rw-p 0019d000 fd:00 3674845                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f2a8e2a4000-7f2a8eeef000 r-xp 00000000 fd:00 2623942                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/server/libjvm.so
+7f2a8eeef000-7f2a8f0ee000 ---p 00c4b000 fd:00 2623942                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/server/libjvm.so
+7f2a8f0ee000-7f2a8f1be000 rw-p 00c4a000 fd:00 2623942                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/jre/lib/amd64/server/libjvm.so
+7f2a8f1be000-7f2a8f200000 rw-p 00000000 00:00 0 
+7f2a8f200000-7f2a8f3e7000 r-xp 00000000 fd:00 3674782                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f2a8f3e7000-7f2a8f5e7000 ---p 001e7000 fd:00 3674782                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f2a8f5e7000-7f2a8f5eb000 r--p 001e7000 fd:00 3674782                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f2a8f5eb000-7f2a8f5ed000 rw-p 001eb000 fd:00 3674782                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f2a8f5ed000-7f2a8f5f1000 rw-p 00000000 00:00 0 
+7f2a8f5f1000-7f2a8f5f4000 r-xp 00000000 fd:00 3674805                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f2a8f5f4000-7f2a8f7f3000 ---p 00003000 fd:00 3674805                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f2a8f7f3000-7f2a8f7f4000 r--p 00002000 fd:00 3674805                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f2a8f7f4000-7f2a8f7f5000 rw-p 00003000 fd:00 3674805                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f2a8f7f5000-7f2a8f80a000 r-xp 00000000 fd:00 2623611                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/lib/amd64/jli/libjli.so
+7f2a8f80a000-7f2a8fa0a000 ---p 00015000 fd:00 2623611                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/lib/amd64/jli/libjli.so
+7f2a8fa0a000-7f2a8fa0b000 rw-p 00015000 fd:00 2623611                    /home/impejj/.sdkman/candidates/java/8.0.181-zulu/lib/amd64/jli/libjli.so
+7f2a8fa0b000-7f2a8fa25000 r-xp 00000000 fd:00 3674915                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f2a8fa25000-7f2a8fc24000 ---p 0001a000 fd:00 3674915                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f2a8fc24000-7f2a8fc25000 r--p 00019000 fd:00 3674915                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f2a8fc25000-7f2a8fc26000 rw-p 0001a000 fd:00 3674915                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f2a8fc26000-7f2a8fc2a000 rw-p 00000000 00:00 0 
+7f2a8fc2a000-7f2a8fc51000 r-xp 00000000 fd:00 3674754                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f2a8fc51000-7f2a8fc53000 r--s 0000a000 fd:00 2682053                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/maven-settings-3.0.4.jar
+7f2a8fc53000-7f2a8fc58000 r--s 00034000 fd:00 2682030                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gson-2.7.jar
+7f2a8fc58000-7f2a8fc67000 r--s 000d9000 fd:00 2682047                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/ivy-2.2.0.jar
+7f2a8fc67000-7f2a8fc6b000 r--s 00027000 fd:00 2681941                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/commons-io-2.2.jar
+7f2a8fc6b000-7f2a8fd36000 rw-p 00000000 00:00 0 
+7f2a8fd36000-7f2a8fd37000 ---p 00000000 00:00 0 
+7f2a8fd37000-7f2a8fd3a000 ---p 00000000 00:00 0 
+7f2a8fd3a000-7f2a8fe39000 rw-p 00000000 00:00 0 
+7f2a8fe39000-7f2a8fe3a000 r--s 00006000 fd:00 2682060                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/plexus-sec-dispatcher-1.3.jar
+7f2a8fe3a000-7f2a8fe3b000 r--s 00007000 fd:00 2681927                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/slf4j-api-1.7.10.jar
+7f2a8fe3b000-7f2a8fe40000 r--s 00041000 fd:00 2681929                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/commons-lang-2.6.jar
+7f2a8fe40000-7f2a8fe41000 r--s 00000000 fd:00 2681942                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/jcip-annotations-1.0.jar
+7f2a8fe41000-7f2a8fe43000 r--s 00007000 fd:00 2682013                    /home/impejj/.gradle/wrapper/dists/gradle-3.5-bin/daoimhu7k5rlo48ntmxw2ok3e/gradle-3.5/lib/plugins/gradle-workers-3.5.jar
+7f2a8fe43000-7f2a8fe45000 r--s 00005000 fd:00 5639500                    /home/impejj/.gradle/caches/3.5/workerMain/gradle-worker.jar
+7f2a8fe45000-7f2a8fe4d000 rw-s 00000000 fd:00 11404139                   /tmp/hsperfdata_impejj/17198
+7f2a8fe4d000-7f2a8fe4e000 rw-p 00000000 00:00 0 
+7f2a8fe4e000-7f2a8fe4f000 ---p 00000000 00:00 0 
+7f2a8fe4f000-7f2a8fe51000 rw-p 00000000 00:00 0 
+7f2a8fe51000-7f2a8fe52000 r--p 00027000 fd:00 3674754                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f2a8fe52000-7f2a8fe53000 rw-p 00028000 fd:00 3674754                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f2a8fe53000-7f2a8fe54000 rw-p 00000000 00:00 0 
+7fffacba3000-7fffacbc4000 rw-p 00000000 00:00 0                          [stack]
+7fffacbee000-7fffacbf1000 r--p 00000000 00:00 0                          [vvar]
+7fffacbf1000-7fffacbf3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Djava.security.manager=worker.org.gradle.process.internal.worker.child.BootstrapSecurityManager -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant 
+java_command: worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Worker Daemon 1'
+java_class_path (initial): /home/impejj/.gradle/caches/3.5/workerMain/gradle-worker.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+USERNAME=impejj
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xa3f0b0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xa3f0b0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x8a8fc0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x8a8fc0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x8a8fc0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x8a8fc0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x8aa6c0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x8abdb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x8abdb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x8abdb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x8abdb0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.1 LTS"
+
+uname:Linux 4.15.0-38-generic #41-Ubuntu SMP Wed Oct 10 10:59:38 UTC 2018 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 31131, NOFILE 1048576, AS infinity
+load average:3,99 2,07 1,44
+
+/proc/meminfo:
+MemTotal:        8032212 kB
+MemFree:          125076 kB
+MemAvailable:      27676 kB
+Buffers:             640 kB
+Cached:           208480 kB
+SwapCached:         1804 kB
+Active:          6718028 kB
+Inactive:         849336 kB
+Active(anon):    6712300 kB
+Inactive(anon):   839088 kB
+Active(file):       5728 kB
+Inactive(file):    10248 kB
+Unevictable:        2384 kB
+Mlocked:            2384 kB
+SwapTotal:       1003516 kB
+SwapFree:              0 kB
+Dirty:               132 kB
+Writeback:           116 kB
+AnonPages:       7359220 kB
+Mapped:           135520 kB
+Shmem:            192776 kB
+Slab:             130500 kB
+SReclaimable:      60932 kB
+SUnreclaim:        69568 kB
+KernelStack:       19040 kB
+PageTables:        92320 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5019620 kB
+Committed_AS:   17703300 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      304016 kB
+DirectMap2M:     7948288 kB
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, erms, ht, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3517U CPU @ 1.90GHz
+stepping	: 9
+microcode	: 0x20
+cpu MHz		: 2614.233
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.30
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3517U CPU @ 1.90GHz
+stepping	: 9
+microcode	: 0x20
+cpu MHz		: 2589.290
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.30
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3517U CPU @ 1.90GHz
+stepping	: 9
+microcode	: 0x20
+cpu MHz		: 2576.711
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.30
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3517U CPU @ 1.90GHz
+stepping	: 9
+microcode	: 0x20
+cpu MHz		: 2710.325
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.30
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 8032212k(121536k free), swap 1003516k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.181-b02) for linux-amd64 JRE (1.8.0_181-b02), built on Jul 11 2018 14:31:35 by "zulu_re" with gcc 4.4.7 20120313 (Red Hat 4.4.7-3)
+
+time: Sat Oct 27 15:28:30 2018
+elapsed time: 12 seconds (0d 0h 0m 12s)
+
